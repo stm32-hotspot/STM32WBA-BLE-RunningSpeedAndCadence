@@ -11,7 +11,12 @@
 
 1) Run this Bluetooth® Low Energy Running Speed and Cadence project where the STM32WBA will advertise
 
-2) Use the ANDROID/IOS ST BLE Sensor application or ST BLE Toolbox application to connect with this Bluetooth® Low Energy [Running Speed and Cadence Profile 1.0](https://www.bluetooth.org/docman/handlers/downloaddoc.ashx?doc_id=261266) (RSC_XX where XX is the 2 last digit of the Bluetooth® Device Address)
+2) Use one of the following remote interfaces to interact with your device: <a href="https://wiki.st.com/stm32mcu/wiki/Connectivity:BLE_smartphone_applications#Bluetooth-C2-AE_LE_collector_applications_for_STM32WBA
+"> Bluetooth LE collector applications for STM32WBA.</a>
+   On the smartphone, download the <a href="https://wiki.st.com/stm32mcu/wiki/Connectivity:BLE_smartphone_applications#Bluetooth-C2-AE_LE_collector_applications_for_STM32WBA
+"> Bluetooth LE collector applications for STM32WBA.</a> application.
+
+With the ANDROID/IOS ST BLE Toolbox application to connect with this Bluetooth® Low Energy [Running Speed and Cadence Profile 1.0](https://www.bluetooth.org/docman/handlers/downloaddoc.ashx?doc_id=261266) (RSC_XX where XX is the 2 last digit of the Bluetooth® Device Address)
   
    Scan on ANDROID/IOS:
    <div align="center">

@@ -261,8 +261,7 @@ void RSCS_APP_EvtRx(RSCS_APP_ConnHandleNotEvt_t *p_Notification)
         RSCS_APP_Context.RSCSSCP_InProgress = 0;
         RSCS_APP_Context.RSCSMChar.Flags = NO_RSCSM_FLAG;
         RSCS_APP_Context.RSCSMChar.Flags = INSTANTANEOUS_STRIDE_LENGTH_PRESENT |
-                                           TOTAL_DISTANCE_PRESENT |
-                                           RUNNING_STATUS;
+                                           TOTAL_DISTANCE_PRESENT;
         RSCS_APP_Context.RSCSMChar.InstantaneousCadence = 0;
         RSCS_APP_Context.RSCSMChar.InstantaneousSpeed = 0;
         RSCS_APP_Context.RSCSMChar.InstantaneousStrideLength = 0;
@@ -311,8 +310,7 @@ void RSCS_APP_Init(void)
   /* RSCS Measurement */
   RSCS_APP_Context.RSCSMChar.Flags = NO_RSCSM_FLAG;
   RSCS_APP_Context.RSCSMChar.Flags = INSTANTANEOUS_STRIDE_LENGTH_PRESENT |
-                                     TOTAL_DISTANCE_PRESENT |
-                                     RUNNING_STATUS;
+                                     TOTAL_DISTANCE_PRESENT;
   RSCS_APP_Context.RSCSMChar.InstantaneousCadence = 0;
   RSCS_APP_Context.RSCSMChar.InstantaneousSpeed = 0;
   RSCS_APP_Context.RSCSMChar.InstantaneousStrideLength = 0;
@@ -687,12 +685,14 @@ static void RSCS_Rscm_Measurement(void)
 
   RSCS_APP_Context.RSCSMChar.InstantaneousCadence += 10;
   
+  RSCS_APP_Context.RSCSMChar.Flags = NO_RSCSM_FLAG;
+  RSCS_APP_Context.RSCSMChar.Flags = INSTANTANEOUS_STRIDE_LENGTH_PRESENT |
+                                     TOTAL_DISTANCE_PRESENT;
   if(RSCS_APP_Context.RSCSMChar.InstantaneousCadence > 60)
   {
-    /* Walking status */
-    RSCS_APP_Context.RSCSMChar.Flags = NO_RSCSM_FLAG;
-    RSCS_APP_Context.RSCSMChar.Flags = INSTANTANEOUS_STRIDE_LENGTH_PRESENT |
-                                       TOTAL_DISTANCE_PRESENT;
+    /* Running status */
+    RSCS_APP_Context.RSCSMChar.Flags |= RUNNING_STATUS;
+    LOG_INFO_APP("Running Status\r\n");
   }
   
   RSCS_APP_Context.RSCSMChar.InstantaneousSpeed = ((RSCS_ReadRTCSSRSS()) & 0xFF) |
